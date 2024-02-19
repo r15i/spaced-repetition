@@ -6,3 +6,6 @@ della memoria
 4. è molto utile notare che in realtà la memoria non è separata tra le materie, una persona ha sicuramente una capacità di memoria unica, quindi sarebbe molto interessante vedere la 
 capacità di memoria comulativa(per fare questo bisognerebbe analizzare la forgetting curve della singola frazione di ogni argomento e poi sommare)
 5. sarebbe interessante provare a vendere il sito e la app tramite un libro sulla curva dell'oblio e l'effective studying
+6. bisogna inserire un modo per ricaricare i piani (ie dargli un formato json ) per poi poterli aggiornare nel caso in cui si abbia missato una data(con logica di  shiftare l'intero programma)
+7. inserisco un modo per debuggare (tipo i valori di forgetting per ogni argomento )
+8. bisogna cambiare la forgetting cuve da minuti in giorni

@@ -12,26 +12,7 @@
     {
         "title": "Machine learning",
         "topics": [
-            "docsy exam",
-            "Slides machine learning framework",
-            "Slides PAC learning",
-            "Slides uniform convergence",
-            "Slides bias complexity",
-            "Slides VC dimension",
-            "Slides linear predictors",
-            "Slides Model Selection Validation",
-            "Slides homework 1",
-            "Slides regularization",
-            "Slides SVM E SVM EXERCIZE",
-            "Slides Kernel methods",
-            "Slides SGD",
-            "Slides Clustering",
-            "Slides Neural Networks",
-            "Slides Convolutional Neural Networks",
-            "Slides Deep Learning Advanced Approaches",
-            "Slides Slides PCA",
-            "Slides Random Forest",
-            "Slides Deep Learning Keras Tutorial and CNN tutotrial"
+            
         ]
     },
     {
