@@ -5,10 +5,10 @@ import json
 import numpy as np
 
 
+# note thisreturn thesingle value need to modify for multiple
 # Formula for forgetting curve: retention = e^(-learn_rate * t)
 def retention_curve(learn_rate, times):
-
-    retention = np.exp(-learn_rate * times)
+    retention = np.exp(-learn_rate * np.array(times))
     return retention
 
 
@@ -32,42 +32,52 @@ def learning_rate_from_retention(retention, time):
 def calculate_retention_over_time(
     learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay
 ):
-    indexs = list(range(0, under_delay))# initial threshold
-    retentions = []
-
+    indexs = list(range(0, under_delay))  # initial threshold
+    retentions = [1, 1, 1, 1]
+    
     while indexs[-1] < pdays:
-        retentions.append(retention_curve(learn_rate, indexs[-1]))
-        indexs.append(
-            indexs[-1] + round(time_to_reach_retention(learn_rate, th_knowledge))
-        )
-        learn_rate -= inc_lear_rate
         print(learn_rate)
-        if learn_rate < 0.15: # threshold to consider perfect recall (in this case we have almost perfect recal (we forget 0.15)l) 
-            retentions.append(1)
-            print(retentions)
-            break
-    """ print(retentions)
-    print(len(retentions))
+
+        if (
+            learn_rate > 0
+        ):  # threshold to consider perfect recall (in this case we have almost perfect recal (we forget 0.15)l)
+
+            tmp = indexes[-1] # last session 
+            
+            #append index new session 
+            indexs.append(
+                indexs[-1] + round(time_to_reach_retention(learn_rate, th_knowledge))
+            )
+            #append curve from last to this session 
+            retentions = retentions + retention_curve(learn_rate, indexs[-1]-tmp)
+
+            # from the last repetition
+            # if disabled is like equally separated
+            #learn_rate -= inc_lear_rate
+        else:
+            retentions.append(1.0)
+            
+
+    print(pdays)
     print(indexes)
-    print(len(indexes)) """
+    print(len(indexes))
+    print(retentions)
+    print(len(retentions))
+
     return indexs, retentions
 
 
-# Function to plot the associated graph of the forgetting curve
-def plot_forgetting_curve_with_indexes(
-    learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay
-):
-
+# Function to plot the a fucntion with associated indexes and value of the function
+def plot_function_with_indexes(times, func_val, indexs):
     times = list(range(0, pdays, 1))
-
     indexs, retentions = calculate_retention_over_time(
         learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay
     )
-    plt.plot(times, retentions, marker="o", linestyle="-")
 
+    plt.plot(indexs, retentions, marker="o", linestyle="-")
     for index in indexs:
         plt.axvline(
-            x=index, color="gray", linestyle="--", linewidth=0.5
+            x=index, color="red", linestyle="--", linewidth=0.5
         )  # Add vertical lines
 
     plt.title("Forgetting Curve")
@@ -83,9 +93,6 @@ def plot_forgetting_curve(learn_rate, pdays, th_knowledge, inc_lear_rate, under_
     indexs, retentions = calculate_retention_over_time(
         learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay
     )
-
-    print(len(times))
-    print(len(retentions))
 
     plt.plot(indexs, retentions, marker="o", linestyle="-")
 
@@ -215,7 +222,7 @@ in_learn_rate = 0.4  # initial forgetting rate
 th_knowledge = (
     0.50  # threshold of when repetion is triggered, how low hour knowledge can go
 )
-inc_lear_rate = 0.05  # how much we are able to retain more given a repetition (how much the learning rate augment given a session)
+inc_lear_rate = 0.001  # how much we are able to retain more given a repetition (how much the learning rate augment given a session)
 
 under_delay = 4  # initial contiguos time (in session ) used to understand the (Acquisition (),Comprehension, Rielaboration)
 # shuld be useful
@@ -242,7 +249,23 @@ indexes = calcola_indici_per_argomento(
     "test", pdays, dhw, t_sess, in_learn_rate, th_knowledge, inc_lear_rate, under_delay
 )
 
+# calculate the indexes for the spaced repetition and the associated retention curve
+
+
+# this is the bed rock that calculates the indexes for a single part
+""" indexs, retentions = calculate_retention_over_time(
+    learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay
+)
+ """
 
 # print(indexes)
+
+
+# TO do write the generic version and update
+# need also a method to plot have the complete curve
+
+# plot_function_with_indexes
 plot_forgetting_curve(in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay)
-# plot_forgetting_curve_with_indexes(in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay)
+plot_forgetting_curve_with_indexes(
+    in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay
+)

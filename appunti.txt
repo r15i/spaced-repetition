@@ -9,3 +9,12 @@ capacità di memoria comulativa(per fare questo bisognerebbe analizzare la forget
 6. bisogna inserire un modo per ricaricare i piani (ie dargli un formato json ) per poi poterli aggiornare nel caso in cui si abbia missato una data(con logica di  shiftare l'intero programma)
 7. inserisco un modo per debuggare (tipo i valori di forgetting per ogni argomento )
 8. bisogna cambiare la forgetting cuve da minuti in giorni
+9. def calculate_retention_over_time bisogna finire questa
+
+
+9.  aggiornare le seguenti funzioni e scrivere l'api (e studiare come scrivere una api)
+# print(indexes)
+#TO do write the generic version and update 
+#plot_function_with_indexes
+plot_forgetting_curve(in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay)
+plot_forgetting_curve_with_indexes(in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay)
