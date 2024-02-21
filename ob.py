@@ -38,9 +38,8 @@ def calculate_retention_over_time(
 ):
     indexs = list(range(0, under_delay))  # initial threshold
     retentions = [1, 1, 1, 1]
-
     while indexs[-1] < pdays:
-        print(learn_rate)
+
 
         if (
             learn_rate
@@ -52,21 +51,15 @@ def calculate_retention_over_time(
                 indexs[-1] + round(time_to_reach_retention(learn_rate, th_knowledge))
             )
 
+
             # append the new part of the curve from time before
-            retentions = retentions + retention_curve(
-                learn_rate, indexs[-1] - indexs[-2]
+            retentions = retentions + list(retention_curve(
+                learn_rate, range(indexs[-1] - indexs[-2]))
             )
 
             # from the last repetition
-            # if disabled is like equally separated
+            # if disabled is like equally separated 
             # learn_rate -= inc_lear_rate
         else:
             retentions.append(1.0)
-
-    print(pdays)
-    print(indexs)
-    print(len(indexs))
-    print(retentions)
-    print(len(retentions))
-
     return indexs, retentions

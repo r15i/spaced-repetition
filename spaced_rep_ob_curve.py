@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib 
 from math import floor, exp
 import json
 import numpy as np
@@ -6,10 +7,11 @@ from  ob import *
 from utils import *
 
 
+
+matplotlib.use('Qt5Agg')  # or 'Qt5Agg', 'GTK3Agg', etc.
 # Function to plot the a fucntion with associated indexes and value of the function
 def plot_function_with_indexes(times, func_val, indexs):
     times = list(range(0, pdays, 1))
-    
     plt.plot(times, func_val, marker="o", linestyle="-")
     for index in indexs:
         plt.axvline(
@@ -34,7 +36,7 @@ def plot_forgetting_curve(in_learn_rate, pdays, th_knowledge, inc_lear_rate, und
 
 
 # tra la data di oggi e la data dell'esame
-days = 60  # 2 month to study
+days = 200  # 2 month to study
 risk_factor = 1 / 4  # what fraction of these days to account for problem and ext
 dhw = 6  # 6hour of work per day (used to subdive in sessions each argoument)
 t_sess = (
@@ -42,7 +44,7 @@ t_sess = (
 )  # length of a session in minutes (this is the main parameter that we can handle for each exam)
 
 
-in_learn_rate = 0.4  # initial forgetting rate
+in_learn_rate = 0.1  # initial forgetting rate
 th_knowledge = (
     0.50  # threshold of when repetion is triggered, how low hour knowledge can go
 )
@@ -58,14 +60,19 @@ dates = lista_date(datetime.now(), days)
 pdays = round(days- days*risk_factor)
 
 
-i,v = calculate_retention_over_time(
-    in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay
-)
+
+#for some reason the v are one too much
+i,v = calculate_retention_over_time(in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay)
 
 
-#plot function with indexes 
+print(i)
+print(v)
+
+#plot function with indexes
+times = list(range(0,pdays,1))
+plot_function_with_indexes(times, v[:pdays], i)
+
 #plot_forgetting_curve(in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay)
-
 
 
 
