@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from math import floor, exp
 import json
 import numpy as np
+from math import floor, exp
 
 
 # note thisreturn thesingle value need to modify for multiple
@@ -63,8 +64,8 @@ def calculate_retention_over_time(
             retentions.append(1.0)
 
     print(pdays)
-    print(indexes)
-    print(len(indexes))
+    print(indexs)
+    print(len(indexs))
     print(retentions)
     print(len(retentions))
 

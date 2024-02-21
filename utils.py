@@ -1,4 +1,15 @@
 
+from datetime import datetime, timedelta
+import json
+import numpy as np
+from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
+from math import floor, exp
+import json
+import numpy as np
+from math import floor, exp
+
+
 
 # ritorna una lista di indici da oggi alla fine della data dell'esame
 # considerando i per ogni argomento una fase contigua di Acquisizione, comprensione e Rielaborazione
@@ -16,7 +27,7 @@ def calcola_indici(
     inc_lear_rate,
     under_delay,
 ):
-pass
+    pass
 
 
 # Argomenti
@@ -53,6 +64,7 @@ def calcola_indici(
     return indici
 
 
+# calcola la lista delle date dalla data di inizio a num_giorni
 def lista_date(data_inizio=datetime.now(), num_giorni=60):
     date = []
     for i in range(num_giorni):
@@ -83,14 +95,4 @@ def parse_json(filename):
 
 
 
-
-# to save to format
-# save_to_json(esame_data, "esami.json")
-# Usage:
-ex = parse_json("esami.json")[0]
-
-#print the exam
-for esame in data:
-     print("Title:", esame["title"])
-     print("Topics:", esame["topics"])
 
