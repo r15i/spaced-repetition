@@ -1,10 +1,13 @@
-1. bisgna scegliere una implementazione della forgetting curve 
+
+1. finire la funzione di plot e confrontare con gli indexes 
+2. da tenere presente che ora la parte di comprensione verrà inserita successivamente
+
+
+
+
 2. la funzione di approssimazione dovrebbe essere quella basata meglio sul numero di persone campione e poi approssimata
 meglio con una rete basata sull'utente, traina sulla qualità dello studio che lo studente ha 
-3. visto che il tempo stringe scelgo di implementare un semplice esponenziale come forgetting curve e scelgo di tornare a ripetere ogni volta che scendo sotto l'80%
-della memoria
-4. è molto utile notare che in realtà la memoria non è separata tra le materie, una persona ha sicuramente una capacità di memoria unica, quindi sarebbe molto interessante vedere la 
-capacità di memoria comulativa(per fare questo bisognerebbe analizzare la forgetting curve della singola frazione di ogni argomento e poi sommare)
+4. è molto utile notare che in realtà la memoria non è separata tra le materie, una persona ha sicuramente una capacità di memoria unica, quindi sarebbe molto interessante vedere la capacità di memoria comulativa(per fare questo bisognerebbe analizzare la forgetting curve della singola frazione di ogni argomento e poi sommare)
 5. sarebbe interessante provare a vendere il sito e la app tramite un libro sulla curva dell'oblio e l'effective studying
 6. bisogna inserire un modo per ricaricare i piani (ie dargli un formato json ) per poi poterli aggiornare nel caso in cui si abbia missato una data(con logica di  shiftare l'intero programma)
 7. inserisco un modo per debuggare (tipo i valori di forgetting per ogni argomento )

@@ -31,35 +31,46 @@ def learning_rate_from_retention(retention, time):
     return learn_rate
 
 
-# Function to calculate retention over time
-#
-def calculate_retention_over_time(
-    learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay
+
+
+# Function to calculate when to repeat over time (only memorization)
+# in_learn_rate initial learning rate
+# pdays the number of days
+# th_knowledge when to repeat
+# inc_learn_rate increase in retention capability
+def calculate_indexes_over_time(
+        in_learn_rate, pdays, th_knowledge, inc_learn_rate
 ):
-    indexs = list(range(0, under_delay))  # initial threshold
-    retentions = [1, 1, 1, 1]
+    learn_rate = in_learn_rate
+    indexs = [1]
+    #while the index of the last idex is lower than the pdays
     while indexs[-1] < pdays:
-
-
-        if (
-            learn_rate
-            > 0  # threshold to consider perfect recall (in this case we have almost perfect recal (we forget 0.15)l)
-        ):
-
-            # append index new session
-            indexs.append(
-                indexs[-1] + round(time_to_reach_retention(learn_rate, th_knowledge))
-            )
-
-
-            # append the new part of the curve from time before
-            retentions = retentions + list(retention_curve(
-                learn_rate, range(indexs[-1] - indexs[-2]))
-            )
-
-            # from the last repetition
-            # if disabled is like equally separated 
-            # learn_rate -= inc_lear_rate
+        if(learn_rate>0):
+            #appends the time it will take to reach back to the treshold plus the last repetitiotion index
+            indexs.append(indexs[-1]+round(time_to_reach_retention(learn_rate,th_knowledge))) 
+            #learn_rate= learn_rate - inc_learn_rate
         else:
-            retentions.append(1.0)
-    return indexs, retentions
+            indexs.append(index[-1])
+
+    return indexs
+
+# calculate the curve based on a list of indexes
+# (to check if it works with the right logic)
+# in_learn_rate initial learning rate
+# pdays the number of days
+# th_knowledge when to repeat
+# inc_learn_rate increase in retention capability
+def calculate_values_over_time(
+        in_learn_rate, pdays, th_knowledge, inc_learn_rate,indexs
+):
+    learn_rate = in_learn_rate
+    val = [1.0]
+    for i in range(1,len(indexs)):
+        if(learn_rate>0):
+            val = val +list( retention_curve(learn_rate,list(range(indexs[i]-indexs[i-1]))))
+            #learn_rate= learn_rate- inc_learn_rate 
+        else:
+            val.append(1.0)
+    return val[:pdays]
+ 
+
