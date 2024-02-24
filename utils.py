@@ -22,7 +22,7 @@ def calcola_indici(
     risk_factor,
     dhw,
     t_sess,
-    in_learn_rate,
+    in_forg_rate,
     th_knowledge,
     inc_lear_rate,
     under_delay,
@@ -36,9 +36,9 @@ def calcola_indici(
 # risk_factor quanti di questi giorni saranno effettivamente usati per studiare
 # dhw quante ore al giorno possiamo studiare
 # t_sess quanto dura al minuto una session ( PARAMETRO PRINCIPALE di ottimizzazione )
-# in_learn_rate learning rate iniziale
+# in_forg_rate learning rate iniziale
 # th_knowledge threshold sotto il quale non scendere per il learning rate
-# inc_learn_rate incremento di learning rate per ogni sessione
+# inc_forg_rate incremento di learning rate per ogni sessione
 # under_delay tempo richiesto in sessioni per comprendere un argomento ed eseguire Acquisizione,Comprensione e Rielaborazione
 def calcola_indici(
     ex,
@@ -46,7 +46,7 @@ def calcola_indici(
     risk_factor,
     dhw,
     t_sess,
-    in_learn_rate,
+    in_forg_rate,
     th_knowledge,
     inc_lear_rate,
     under_delay,
@@ -55,7 +55,7 @@ def calcola_indici(
     pdays = days - floor(days * risk_factor)  # actual days for preparation
 
     # 1 calcolare gli indici per ogni singolo argomento comprendendo i giorni iniziali di delay
-    # calcola_indici_per_argomento(ex,days,risk_factor,dhw,t_sess,in_learn_rate,th_knowledge,inc_lear_rate,under_delay)
+    # calcola_indici_per_argomento(ex,days,risk_factor,dhw,t_sess,in_forg_rate,th_knowledge,inc_lear_rate,under_delay)
     # 2 unire tutti le liste di indici in modo da inserire in ogni gap la fase di understanding
     # 3 identificare ogni sessione con la fase associata per il suo argomento
 
