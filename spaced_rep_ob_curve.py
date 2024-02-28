@@ -74,9 +74,6 @@ i = calculate_indexes_over_time(in_forg_rate, pdays, th_knowledge, inc_forg_rate
 v = calculate_values_over_time(in_forg_rate, pdays, th_knowledge, inc_forg_rate, i)
 
 
-
-
-
 # plot function with indexes
-plot_function_with_indexes(v, i, th_knowledge)
+plot_function_with_indexes(v, [x*24 for x in i  ], th_knowledge)
 

@@ -1,23 +1,45 @@
 
-1. finire la funzione di plot e confrontare con gli indexes 
-2. da tenere presente che ora la parte di comprensione verrà inserita successivamente
+
+cose da fare:
+- rivedere la libreria e adattarla al nuovo modello 
+- definire algoritmo 
+- spezzare il lavoro 
+- eseguire
 
 
 
-
-2. la funzione di approssimazione dovrebbe essere quella basata meglio sul numero di persone campione e poi approssimata
-meglio con una rete basata sull'utente, traina sulla qualità dello studio che lo studente ha 
-4. è molto utile notare che in realtà la memoria non è separata tra le materie, una persona ha sicuramente una capacità di memoria unica, quindi sarebbe molto interessante vedere la capacità di memoria comulativa(per fare questo bisognerebbe analizzare la forgetting curve della singola frazione di ogni argomento e poi sommare)
-5. sarebbe interessante provare a vendere il sito e la app tramite un libro sulla curva dell'oblio e l'effective studying
-6. bisogna inserire un modo per ricaricare i piani (ie dargli un formato json ) per poi poterli aggiornare nel caso in cui si abbia missato una data(con logica di  shiftare l'intero programma)
-7. inserisco un modo per debuggare (tipo i valori di forgetting per ogni argomento )
-8. bisogna cambiare la forgetting cuve da minuti in giorni
-9. def calculate_retention_over_time bisogna finire questa
+-  Cambio di modello: 
+    Si da una lista di sessioni di studio in 2 modi :
+    - flat    : ho un numero di x di sessioni in un timeframe 
+    - precise : specifico quando e quanto intendo studiare
 
 
-9.  aggiornare le seguenti funzioni e scrivere l'api (e studiare come scrivere una api)
-# print(indexes)
-#TO do write the generic version and update 
-#plot_function_with_indexes
-plot_forgetting_curve(in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay)
-plot_forgetting_curve_with_indexes(in_learn_rate, pdays, th_knowledge, inc_lear_rate, under_delay)
+    - si effettua una stima nel timeframe del remember rate su qualsiasi potenziale timeframe settato dall'utente e ottunuto dalla fase 1 
+        (noi utilizzeremo una stima tra una giornata o un'altra(ricordiamo il 0.3 dopo una giornata) ma in realtà dovrebbe essere misurata 
+        per il timeframe tra una sessione ed un'altra
+    
+
+    - dato il timeframe e il remember rate l'ordine  delle cose da ripassare è dato da : 
+        1. quanto timeframe è passato fino alla prossima sessione (this needs to be calibrated on the remember rate)
+        2.  controllare per ogni argomento dato il numero di ripetizioni (che modifica il learning rate) e lo stato della memoria rispetto alla scorsa ripetizione 
+            cosa è necessario piu ripetere e se è possibile inserire nuovi argomenti da studiare
+
+
+
+a questo punto il problema principale è trovare un modo di modellizzare quanto tempo ci serve per la comprensione di un argomento dato che è a quel punto che viene ritenuto efficace inserire un nuovo argomento (oppure si può definire una percentuale es inserire comunque anche se ritengo che mi serva meno tempo per la comrensione)
+
+IDEA IMPORTANTE 
+alla fine lo studio è una serie di processo e fasi nelle quali bisogna massimizzare  nel quale noi cerchiamo di massimizzare una certa funzione in un determiato timeframe 
+massimizzare la comprensione , la memoria , la velocità (esercizi)
+
+IDEE PER LE CURVE DI COMPRENSIONE 
+quindi il problema si spezza nel tracciare la le due curve di comprensione(approssimata come una iniziale lineare e poi tendendo a 100% con una logaritmica(probabilmente ci sono migliori approssimazioni dato che bisognerebbe valutare la tipologia dell'argomento)) e memoria (modello esponenziale )
+
+ogni argomento ripassato avrà una curva di memoria e una curva di comprensione (la prima che mostra quanto ci ricordiamo di un argomento ) 
+la seconda quanto abbiamo capito effettivamente (misurata tramite una approssimazione lineare sulle pagine(se ho letto un numero di pagine 
+sicuramente so di piu del non averle lette))
+
+MIGLIORAMENTI 
+1. si potrebbe definire un loosly defined  process per il learning (comprensione , ripetizione , memorizzazione finale) 
+2. sarebbe interessante provare a vendere il sito e la app tramite un libro sulla curva dell'oblio e l'effective studying
+

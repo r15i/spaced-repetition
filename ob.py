@@ -6,8 +6,6 @@ import numpy as np
 from math import floor, exp
 
 
-# note thisreturn thesingle value need to modify for multiple
-samp_prec = 1/24 #precision of the sampling by the hour
 
 # Formula for forgetting curve: retention = e^(-forg_rate * t)
 def retention_curve(forg_rate, times):
