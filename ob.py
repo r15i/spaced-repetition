@@ -39,9 +39,7 @@ def learning_rate_from_retention(retention, time):
 def calculate_indexes_over_time(in_forg_rate, pdays, th_knowledge, inc_forg_rate):
     forg_rate = in_forg_rate
     indexs = [1]
-    k = 0 #initial remembering stauts 
-
-    
+    k = 0 #initial remembering stauts     
     # while the index of the last idex is lower than the pdays
     while indexs[-1] < pdays and len(indexs) < pdays:
         if k < 1:

@@ -52,14 +52,10 @@ def plot_forgetting_curve(
 # tra la data di oggi e la data dell'esame
 days = 7  # 2 month to study
 risk_factor = 1 / 4  # what fraction of these days to account for problem and ext
-
 in_forg_rate = 1.2  #initial forgetting rate (based on the concept that after 1 day we forget 70% if what we have learned)(this is were we have the calibration)
                     #to calibrate tells how much we remeber after a day (is better as a worst case (it is a faster))
-
 inc_forg_rate = 0.1 # how much we are able to retain more given a repetition (how much the learning rate augment given a session)(also here) expressed between 0-1
                      # wich means that 0 we had no improvement 1 we have maximumum recall
-
-
 th_knowledge = (
     0.30  # threshold of when repetion is triggered, how low hour knowledge can go
 )
@@ -74,10 +70,11 @@ dates = lista_date(datetime.now(), days)
 pdays = round(days - days * risk_factor)
 
 # for some reason the v are one too much
-
-
 i = calculate_indexes_over_time(in_forg_rate, pdays, th_knowledge, inc_forg_rate)
 v = calculate_values_over_time(in_forg_rate, pdays, th_knowledge, inc_forg_rate, i)
+
+
+
 
 
 # plot function with indexes

@@ -9,61 +9,6 @@ import json
 import numpy as np
 from math import floor, exp
 
-
-
-# ritorna una lista di indici da oggi alla fine della data dell'esame
-# considerando i per ogni argomento una fase contigua di Acquisizione, comprensione e Rielaborazione
-# considerando poi una fase di spaced repetition di Applicazione e ricordo
-# si procede proseguendo nel programma solo quando 1 si e' conclusa la fase di Acquisizione comrensione e rielaborazione e sono stati trovati degli spazi
-# dove inserire nella fase di spaced repetition
-def calcola_indici(
-    ex,
-    days,
-    risk_factor,
-    dhw,
-    t_sess,
-    in_forg_rate,
-    th_knowledge,
-    inc_lear_rate,
-    under_delay,
-):
-    pass
-
-
-# Argomenti
-# ex identifica l'esame
-# days il numero di giorni a disposizione
-# risk_factor quanti di questi giorni saranno effettivamente usati per studiare
-# dhw quante ore al giorno possiamo studiare
-# t_sess quanto dura al minuto una session ( PARAMETRO PRINCIPALE di ottimizzazione )
-# in_forg_rate learning rate iniziale
-# th_knowledge threshold sotto il quale non scendere per il learning rate
-# inc_forg_rate incremento di learning rate per ogni sessione
-# under_delay tempo richiesto in sessioni per comprendere un argomento ed eseguire Acquisizione,Comprensione e Rielaborazione
-def calcola_indici(
-    ex,
-    days,
-    risk_factor,
-    dhw,
-    t_sess,
-    in_forg_rate,
-    th_knowledge,
-    inc_lear_rate,
-    under_delay,
-):
-
-    pdays = days - floor(days * risk_factor)  # actual days for preparation
-
-    # 1 calcolare gli indici per ogni singolo argomento comprendendo i giorni iniziali di delay
-    # calcola_indici_per_argomento(ex,days,risk_factor,dhw,t_sess,in_forg_rate,th_knowledge,inc_lear_rate,under_delay)
-    # 2 unire tutti le liste di indici in modo da inserire in ogni gap la fase di understanding
-    # 3 identificare ogni sessione con la fase associata per il suo argomento
-
-    indici = [0]  # complete indexes
-
-    return indici
-
-
 # calcola la lista delle date dalla data di inizio a num_giorni
 def lista_date(data_inizio=datetime.now(), num_giorni=60):
     date = []
