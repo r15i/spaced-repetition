@@ -37,24 +37,11 @@ week["SAB"] = []
 week["DOM"] = []
 """
 
-
-# loading exams 
-
-exams = parse_json("esami.json")["esami"]
-
-
-for exam in exams:
-    print("Exam:", exam["nome"])
-    for argument in exam["argomenti"]:
-        print("Argument:", argument["nome"])
-        print("K Status:", argument["k"])
-        print("Number of Repetitions:", argument["n_rep"])
-        print("Date of Last Repetition:", argument["date_last_rep"])
-    print()
+esami = load_args("esami.json")
 
 
 
-0
+
 
 
 
