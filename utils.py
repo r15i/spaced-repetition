@@ -17,6 +17,9 @@ def lista_date(data_inizio=datetime.now(), num_giorni=60):
         date.append(data)
     return np.array(date)
 
+# calcola i giorni tra due date
+def giorni_tra_date(data_inizio=datetime.now(), data_fine=datetime.now()):
+    return (data_fine - data_inizio).days
 
 class Esame:
     def __init__(self, title, topics):

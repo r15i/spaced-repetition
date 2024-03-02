@@ -1,44 +1,34 @@
-[
+{
+  "esami": [
     {
-        "title": "Internet",
-        "topics": [
-            "ex INTRO",
-            "ex DLL",
-            "ex Transport",
-            "ex Network",
-            "ex exam"
-        ]
-    },
-    {
-        "title": "Machine learning",
-        "topics": [
-            
-        ]
-    },
-    {
-        "title": "Computer vision",
-        "topics": [
-            "Single pixel operations and histogram processing histogram excercise",
-            "Real Cameras",
-            "edge detection and corner detection",
-            "Image formation",
-            "Viola and Jones object detector",
-            "Color Vision",
-            "non-Linear Filters and Image processing and linear filters",
-            "LBP,BRIEF,ORB,SURF",
-            "Hough Transform",
-            "Deep Learning for object detection,Deep Learning for image classification,Semantic segmentation with deep learning",
-            "Feature descriptors",
-            "SIFT",
-            "image segmentation"
-        ]
-    },
-    {
-        "title": "Game Theory",
-        "topics": [
-            "Arg 1",
-            "Arg 2",
-            "Arg 3"
-        ]
-    }
-]
+      "nome": "Internet",
+      "argomenti": [
+        {
+          "nome": "intro",
+          "k": 0.0,
+          "n_rep": 0,
+          "date_last_rep": ""
+        },
+        {
+          "nome": "Performance Anal",
+          "k": 0.0,
+          "n_rep": 0,
+          "date_last_rep": ""
+        },
+        {
+          "nome": "Network layer",
+          "k": 0.0,
+          "n_rep": 2,
+          "date_last_rep": ""
+        },
+        {
+          "nome": "Transport layer",
+          "k": 0.0,
+          "n_rep": 0,
+          "date_last_rep": ""
+        }
+      ]
+    }  
+  ]
+}
+
