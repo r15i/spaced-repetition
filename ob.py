@@ -6,22 +6,19 @@ import numpy as np
 from math import floor, exp
 
 
-
-# Formula for forgetting curve: retention = e^(-forg_rate * t)
-def retention_curve(forg_rate, times):
-    retention = np.exp(-forg_rate * np.array(times))
+def retention_curve(forg_rate, times,k):
+    retention = np.exp(-forg_rate*(1-k) * np.array(times))
     return retention
 
 
 # return the time to reach a target retention (in minutes)
-def time_to_reach_retention(forg_rate, target_retention):
+def time_to_reach_retention(forg_rate, target_retention,k):
     # Utilizziamo la formula inversa della curva di dimenticanza per trovare il tempo necessario
     # t = -ln(retention) / forg_rate
-    time_to_reach = -np.log(target_retention) / forg_rate
+    time_to_reach = -np.log(target_retention) / (forg_rate * (1-k))
     return time_to_reach
 
-
-# return a learning rate for the retention obtained in a certain time (in minutes)
+# used to estimate the retention rate 
 def learning_rate_from_retention(retention, time):
     # Utilizziamo la formula della curva di dimenticanza per trovare il tasso di apprendimento
     # retention = e^(-forg_rate * time)

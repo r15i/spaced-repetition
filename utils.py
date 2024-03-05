@@ -23,29 +23,29 @@ def giorni_tra_date(data_inizio=datetime.now(), data_fine=datetime.now()):
 
 
 class Arg:
-    def __init__(self, name = "" ,k_status = 0. ,n_rep = 0 ,date_last_rep= "00-00-00"  ):
+    def __init__(self, name = "" ,k_status = 0. ,n_rep = 0 ,date_last_rep= ""  ):
         self.name = name
         self.k_status = k_status
         self.n_rep = n_rep
         self.date_last_rep = date_last_rep 
         
-    def set_name(name):
+    def set_name(self,name):
         self.name = name
-    def set_k_status(k_status):
+    def set_k_status(self,k_status):
         self.k_status = k_status
-    def set_n_rep(n_rep):
+    def set_n_rep(self,n_rep):
         self.n_rep = n_rep
-    def set_date_last_rep(date_last_rep):
+    def set_date_last_rep(self,date_last_rep):
         self.date_last_rep = date_last_rep 
 
-    def get_name(name):
-        return name
-    def get_k_status(k_status):
-        return k_status 
-    def get_n_rep(n_rep):
-        return n_rep         
-    def get_date_last_rep(date_last_rep):
-        return date_last_rep 
+    def get_name(self):
+        return self.name
+    def get_k_status(self):
+        return self.k_status 
+    def get_n_rep(self):
+        return self.n_rep         
+    def get_date_last_rep(self):
+        return self.date_last_rep 
     def __str__(self):
         # TO DO 
         pass 
@@ -68,20 +68,22 @@ def load_args(filename):
 
     for exam in exams:
         print("Exam:", exam["nome"])
-        ex = Arg()
-        
+        obj_args = []        
         for argument in exam["argomenti"]:
-            print("Argument:", argument["nome"])
-            ex.set_name = argument["nome"]
-            print("K Status:", argument["k"])
-            ex.set_k_status = argument["k"]
-            print("Number of Repetitions:", argument["n_rep"])
-            ex.set_n_rep = argument["n_rep"]
-            print("Date of Last Repetition:", argument["date_last_rep"])
-            ex.set_date_last_rep=argument["date_last_rep"]
-        print()
-        obj_exam.append(ex)
 
+            ex = Arg()
+            ex.set_name(argument["nome"])
+            ex.set_k_status( argument["k"])
+            ex.set_n_rep(argument["n_rep"])
+            ex.set_date_last_rep(argument["date_last_rep"])
+            
+            print("Argument:", ex.get_name()) 
+            print("K Status:",ex.get_k_status())
+            print("Number of Repetitions:", argument["n_rep"])
+            print("Date of Last Repetition:", argument["date_last_rep"])
+            print()
+            obj_args.append(ex)
+        obj_exam.append(obj_args)
     return obj_exam
 
 
