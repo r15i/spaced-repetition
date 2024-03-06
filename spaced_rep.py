@@ -37,7 +37,7 @@ week["SAB"] = []
 week["DOM"] = []
 """
 
-esami = load_args("esami.json")
+esami = load_exams("esami.json")
 
 
 

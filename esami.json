@@ -1,34 +1,63 @@
 {
-  "esami": [
+  "exams": [
     {
-      "nome": "Internet",
-      "argomenti": [
+      "name": "Internet",
+      "args": [
         {
-          "nome": "intro",
+          "name": "intro",
           "k": 0.0,
           "n_rep": 0,
           "date_last_rep": ""
         },
         {
-          "nome": "Performance Anal",
+          "name": "Performance Anal",
           "k": 0.0,
           "n_rep": 0,
           "date_last_rep": ""
         },
         {
-          "nome": "Network layer",
+          "name": "Network layer",
           "k": 0.0,
           "n_rep": 0,
           "date_last_rep": ""
         },
         {
-          "nome": "Transport layer",
+          "name": "Transport layer",
+          "k": 0.0,
+          "n_rep": 0,
+          "date_last_rep": ""
+        }
+      ]
+    },
+    {
+      "name": "Mate",
+      "args": [
+        {
+          "name": "Algebra",
+          "k": 0.0,
+          "n_rep": 0,
+          "date_last_rep": ""
+        },
+        {
+          "name": "Trigonometria",
+          "k": 0.0,
+          "n_rep": 0,
+          "date_last_rep": ""
+        },
+        {
+          "name": "Topologia",
+          "k": 0.0,
+          "n_rep": 0,
+          "date_last_rep": ""
+        },
+        {
+          "name": "Analisi Complessa",
           "k": 0.0,
           "n_rep": 0,
           "date_last_rep": ""
         }
       ]
     }  
-  ]
+  ] 
 }
 

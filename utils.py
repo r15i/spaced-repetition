@@ -22,6 +22,34 @@ def giorni_tra_date(data_inizio=datetime.now(), data_fine=datetime.now()):
     return (data_fine - data_inizio).days
 
 
+class Exam:
+    def __init__(self, name = "" ,args = None):
+        self.name = name
+        if(args == None):
+            self.args = []        
+        else:
+            self.args = args
+    
+
+    def set_name(self,name):
+        self.name = name
+    def set_args(self,args):
+        self.args = args
+    
+    def add_args(self,arg):
+        self.args.append(arg)
+
+     
+    def get_name(self):
+        return self.name         
+    def get_args(self):
+        return self.args 
+    def __str__(self):
+        # TO DO 
+        pass 
+
+
+
 class Arg:
     def __init__(self, name = "" ,k_status = 0. ,n_rep = 0 ,date_last_rep= ""  ):
         self.name = name
@@ -50,41 +78,59 @@ class Arg:
         # TO DO 
         pass 
 
-def save_to_json(data, filename):
-    with open(filename, "w") as f:
-        json.dump(data, f, indent=4)
+def exam_to_json(exam,filename):
+    exam_skel = {
+        "name": exam.name,
+        "args": []
+    }
 
+    for arg in args:
+        exam_skel.append({
+                "name": arg.name,
+                "k": arg.k_status,
+                "n_rep": arg.n_rep,
+                "date_last_rep": arg.date_last_rep
+            })
+    
+
+       
+
+# TO DO 
+# USED TO ADD PERSISTANCE AT EACH CHANGE
+# LOADS ALL THE EXAMS AND MODIFY ONLY THE ONE WE ARE WORKING ON 
+# TO DO AFTER 
+def update_json(filename,exam):
+    pass
+    
 
 def parse_json(filename):
     with open(filename, "r") as f:
         data = json.load(f)
     return data
 
-def load_args(filename):   
+
+
+def load_exams(filename):   
     # loading exams 
-    exams = parse_json(filename)["esami"]
+    exams = parse_json(filename)["exams"]
    
-    obj_exam  = []
+    exam_list = []
 
     for exam in exams:
-        print("Exam:", exam["nome"])
-        obj_args = []        
-        for argument in exam["argomenti"]:
+        
+        ex = Exam(exam["name"]) 
+        args_list = []
+        for argument in exam["args"]:
 
-            ex = Arg()
-            ex.set_name(argument["nome"])
-            ex.set_k_status( argument["k"])
-            ex.set_n_rep(argument["n_rep"])
-            ex.set_date_last_rep(argument["date_last_rep"])
+            arg = Arg()
+            arg.set_name(argument["name"])
+            arg.set_k_status( argument["k"])
+            arg.set_n_rep(argument["n_rep"])
+            arg.set_date_last_rep(argument["date_last_rep"])
             
-            print("Argument:", ex.get_name()) 
-            print("K Status:",ex.get_k_status())
-            print("Number of Repetitions:", argument["n_rep"])
-            print("Date of Last Repetition:", argument["date_last_rep"])
-            print()
-            obj_args.append(ex)
-        obj_exam.append(obj_args)
-    return obj_exam
+            ex.add_args(arg)
+        exam_list.append(ex)
+    return exam_list
 
 
 
