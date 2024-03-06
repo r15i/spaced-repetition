@@ -39,6 +39,9 @@ week["DOM"] = []
 
 esami = load_exams("esami.json")
 
+mate = esami[1]
+
+
 
 
 
