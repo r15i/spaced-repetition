@@ -6,7 +6,11 @@ import numpy as np
 from math import floor, exp
 
 
-def retention_curve(forg_rate, times,k):
+forg_rate = 1.2 
+
+
+# MAKE THIS AS A MODEL BASED ON THE USER (retention_curve is the fondamental parameter of the user profile=
+def retention_curve( times,k):
     retention = np.exp(-forg_rate*(1-k) * np.array(times))
     return retention
 

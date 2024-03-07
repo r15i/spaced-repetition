@@ -10,7 +10,7 @@ import numpy as np
 from math import floor, exp
 
 # calcola la lista delle date dalla data di inizio a num_giorni
-def lista_date(data_inizio=datetime.now(), num_giorni=60):
+def date_list(data_inizio=datetime.now(), num_giorni=60):
     date = []
     for i in range(num_giorni):
         data = data_inizio + timedelta(days=i)
