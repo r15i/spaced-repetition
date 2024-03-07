@@ -109,7 +109,7 @@ def parse_json(filename):
     return data
 
 
-
+date_format_string = "%Y-%m-%d"
 def load_exams(filename):   
     # loading exams 
     exams = parse_json(filename)["exams"]
@@ -126,7 +126,12 @@ def load_exams(filename):
             arg.set_name(argument["name"])
             arg.set_k_status( argument["k"])
             arg.set_n_rep(argument["n_rep"])
-            arg.set_date_last_rep(argument["date_last_rep"])
+            
+            lrd = argument["date_last_rep"]
+            if (len(lrd)<=0):
+                arg.set_date_last_rep(None)              
+            else:                                 
+                arg.set_date_last_rep(datetime.strptime(date_string, format_string))
             
             ex.add_args(arg)
         exam_list.append(ex)

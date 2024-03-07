@@ -26,17 +26,8 @@ day = [time(8, 30, 0),time(10, 0, 0),time(16, 0, 0)]
 week = [day,day,day,day,day,[],[]] 
 
 # Define a list of weekdays
-weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+weekdays = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"]
 
-esami = load_exams("esami.json")
-
-mate = esami[1]
-
-
-# model the days from now to the end of the exam 
-mate_args = mate.get_args()
-
-n_args = len(mate_args)
 # faccio un ciclo che controlla 
 
 # list of the dates in wich we work 
@@ -53,37 +44,36 @@ work_days = [i for i,x in enumerate(week) if len(x)>0]
 # index of the day in the list 
 for i,d in enumerate(date_list):
         #chech wich kind of day is it 
-        week_day = d.weekday()
+        wd = d.weekday()# days of the week we are considering 
+        # if in the list of the days  
+        if (wd in work_days):
+            schedule.append(d)
 
-        for j,w in enumerate(work_days):
-            
-            if(i==j):
-                schedule.append(d)
-
-            
+# iterate the arguments untill the the end of the days 
 
 
-"""
-        # check for all the argsk 
-        # j index in the week and element of the week w 
-        for j,w in enumerate(mate_args):
-            # align to the same index 
-            if(i!=j):
-               continue 
-            print(weekdays[i])
+exam = load_exams("esami.json")[1]
+# each days ask if the argument has improved 
+# check for all the argsk 
+# j index in the week and element of the week w 
+print(f"{exam.name}")
 
-        #break to increase to go to next day in the list  
-           break 
 
-            # compute the ob curve since last repetition to d 
-            #ob_curve_val = retention_curve(0,0)
-            #if is lower 
-            # update the date of the last repetition 
-            # increase the k ratio 
-            # append the name of the arg to the the date 
-            
+for i,sd in enumerate(schedule):
+    for j,a in enumerate(exam.args):
+        print(a.name) 
+        print(a.)
+        
 
-""" 
+    
+    # compute the ob curve since last repetition to d 
+    #ob_curve_val = retention_curve(0,0)
+    #if is lower 
+    # update the date of the last repetition 
+    # increase the k ratio 
+    # append the name of the arg to the the date 
+    
+
 
 
 
