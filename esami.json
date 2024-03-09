@@ -34,15 +34,15 @@
       "args": [
         {
           "name": "Algebra",
-          "k": 0.0,
-          "n_rep": 0,
-          "date_last_rep": "2024-03-07"
+          "k": 0.5,
+          "n_rep": 6,
+          "date_last_rep": "2024-03-11"
         },
         {
           "name": "Trigonometria",
-          "k": 0.0,
-          "n_rep": 0,
-          "date_last_rep": "2024-03-07"
+          "k": 0.1,
+          "n_rep": 2,
+          "date_last_rep": "2024-03-11"
         },
         {
           "name": "Topologia",

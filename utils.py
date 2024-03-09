@@ -51,7 +51,7 @@ class Exam:
 
 
 class Arg:
-    def __init__(self, name = "" ,k_status = 0. ,n_rep = 0 ,date_last_rep= ""  ):
+    def __init__(self, name = "" ,k_status = 0. ,n_rep = 0 ,date_last_rep=None  ):
         self.name = name
         self.k_status = k_status
         self.n_rep = n_rep
@@ -131,7 +131,7 @@ def load_exams(filename):
             if (len(lrd)<=0):
                 arg.set_date_last_rep(None)              
             else:                                 
-                arg.set_date_last_rep(datetime.strptime(date_string, format_string))
+                arg.set_date_last_rep(datetime.strptime(lrd, date_format_string).date())
             
             ex.add_args(arg)
         exam_list.append(ex)
