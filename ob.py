@@ -27,3 +27,6 @@ def k_val_from_retention_time(retention, time):
     k = (np.log(retention) / (time*ret_rate)) + 1 
     return k
 
+
+
+
